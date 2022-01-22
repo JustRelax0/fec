@@ -22,7 +22,7 @@ class StarRating extends React.Component {
       average = Math.floor((rating/numratings) * 10) / 10;
     }
 
-    console.log('average: ', average);
+    // console.log('average: ', average);
 
     for (var i = 0; i < 5; i++) {
       if (i < Math.floor(average)) {
@@ -31,7 +31,7 @@ class StarRating extends React.Component {
         stars.push(<span className="star overview"></span>)
       } else  if (i === Math.floor(average)){
         var remainder = (average * 10) % 10;
-        console.log('remainder', remainder);
+        // console.log('remainder', remainder);
         if (remainder < 3) {
           stars.push(<span className="star overview"></span>)
         } else if (remainder >= 3 && remainder < 5) {
@@ -46,7 +46,7 @@ class StarRating extends React.Component {
       }
     }
 
-    var totalReviewsSpan = <span className="total-reviews overview">{numratings} reviews</span>
+    var totalReviewsSpan = <span className="total-reviews overview">{numratings}</span>
 
     return (
       <div className="stars">

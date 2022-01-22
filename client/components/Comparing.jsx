@@ -1,24 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import CompareTable from './CompareTable.jsx';
-// import $ from 'jquery';
+import StarRating from '../overview/overviewcomponents/starRating.jsx';
 
 
 var Comparing = (props) => {
-  // console.log('comparing');
-  // console.log('props: ');
-  // console.log(props);
-
-
-  // var [show, setShow] = useState(true);
-
-  // var changeShow = () => {
-  //   if (show === false) {
-  //     setShow(true);
-  //   } else {
-  //     setShow(false);
-  //   }
-  // }
 
   var onActionClick = () => {
     props.hide();
@@ -57,8 +42,9 @@ var Comparing = (props) => {
     }
   }
 
-  // console.log('features table: ');
-  // console.log(features);
+  console.log('features table: ');
+  console.log(props.previewProduct.reviews);
+  console.log(props.relatedProduct.reviews);
 
 
   var displayCheckMarkIf = (included, side) => {
@@ -77,24 +63,24 @@ var Comparing = (props) => {
 
     }
   }
-var renderComparisonTable = features.map( (detail) => {
-  return(
-    <div className="modal-body-detail relatedProductCards">
-      {displayCheckMarkIf(detail[1], 'left')}
-      <span className="modal-body-middle relatedProductCards">{detail[0]}</span>
-      {displayCheckMarkIf(detail[2], 'right')}
-      <br/> <br />
-    </div>
-  )}
-)
+  var renderComparisonTable = features.map( (detail) => {
+    return(
+      <div className="modal-body-detail relatedProductCards">
+        {displayCheckMarkIf(detail[1], 'left')}
+        <span className="modal-body-middle relatedProductCards">{detail[0]}</span>
+        {displayCheckMarkIf(detail[2], 'right')}
+        <br/> <br />
+      </div>
+    )}
+  )
 
-  // add rating to features
-  // maybe add price to features (comparison)
+
+
 
   return (
     <div className="modal relatedProductCards" onClick={onActionClick}>
       <div className="modal-action relatedProductCards" onClick={onActionClick}>&#9733;</div>
-      <div className="modal-content relatedProductCards">
+      <div className = {props.darkMode === false ? "modal-content relatedProductCards" : "modal-content-dark relatedProductCards"}>
         <div className="modal-header relatedProductCards">
           <h5 className="modal-title relatedProductCards">Comparing</h5>
           <div className="modal-products relatedProductCards">
@@ -105,10 +91,17 @@ var renderComparisonTable = features.map( (detail) => {
         <div className="modal-body relatedProductCards">
           {/* <CompareTable compareTable={features}/> */}
           {renderComparisonTable}
+          <div className="modal-body-detail relatedProductCards">
+            <span className = "modal-body-leftRating relatedProductCards">
+              <StarRating reviews={props.relatedProduct.reviews}/>
+            </span>
+            <span className = "modal-body-middle relatedProductCards">Rating</span>
+            <span className = "modal-body-rightRating relatedProductCards">
+              <StarRating reviews={props.relatedProduct.reviews}/>
+            </span>
+          </div>
         </div>
-        <div className="modal-footer relatedProductCards">
-          {/* <button className="button">Close</button> */}
-        </div>
+
       </div>
     </div>
   )

@@ -34,8 +34,8 @@ body {
 
 
 .star {
-  font-size: x-large;
-  width: 24px;
+  font-size: medium;
+  width: 16px;
   display: inline-block;
   color:gray;
 }
@@ -56,8 +56,8 @@ body {
    content:'\2605';
    color:yellow;
    position: absolute;
-   margin-left: -24px;
-   width: 11px;
+   margin-left: -16px;
+   width: 7px;
    overflow:hidden;
 }
 
@@ -65,8 +65,8 @@ body {
   content:'\2605';
   color:yellow;
   position: absolute;
-  margin-left: -24px;
-  width: 6px;
+  margin-left: -16px;
+  width: 4px;
   overflow:hidden;
 }
 
@@ -74,8 +74,8 @@ body {
   content:'\2605';
   color:yellow;
   position: absolute;
-  margin-left: -24px;
-  width: 17px;
+  margin-left: -16px;
+  width: 12px;
   overflow:hidden;
 }
 
@@ -602,19 +602,46 @@ body {
   flex-direction: row;
   align-items: top;
   justify-content: bottom;
-  color: black;
+  /* color: black; */
   font-size: 10px;
+  color: black;
   border: 2px solid black;
   border-radius: 5px;
   margin: 10px;
   height: 90%;
   width: 20%;
+}
 
+.carousel-item-dark {
+  position: relative;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: top;
+  justify-content: bottom;
+  /* color: yellow; */
+  font-size: 10px;
+  color: whitesmoke;
+  border: 2px solid black;
+  border-radius: 5px;
+  margin: 10px;
+  height: 90%;
+  width: 20%;
 }
 
 .carousel-productDetails {
   display: block;
-  background-color: #E7E9EB;
+  /* background-color: #bdac12; */
+  background-color: lightgray;
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.carousel-productDetails-dark {
+  display: block;
+  background-color: rgb(51, 51, 51);
   /* background-color: lightgray; */
   max-width: 100%;
   max-height: 100%;
@@ -622,6 +649,8 @@ body {
   height: auto;
   object-fit: contain;
 }
+
+
 .carousel-action {
   position: absolute;
   font-size: 13px;
@@ -671,6 +700,7 @@ body {
 
 .carousel-details {
   display: block;
+  position:relative;
   margin-left: auto;
   margin-right: auto;
   margin-top: auto;
@@ -682,17 +712,37 @@ body {
   word-wrap: break-word;
   white-space: initial;
   background-color: whitesmoke;
-  color: black;
 }
+
+.carousel-details-dark {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  justify-content: bottom;
+  width: 100%;
+  height: 32%;
+  border-radius: 3px;
+  word-wrap: break-word;
+  white-space: initial;
+  background-color: rgb(117, 117, 117);
+}
+
 .carousel-productCategory {
   display: block;
   margin-left: auto;
   margin-right: auto;
   justify-content: bottom;
   width: 90%;
-  background-color: whitesmoke;
-  color: lightgrey;
+}
 
+.carousel-productCategory-dark {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: bottom;
+  width: 90%;
 }
 
 .carousel-productName {
@@ -702,18 +752,41 @@ body {
   justify-content: bottom;
   font-weight: bold;
   width: 90%;
-  background-color: whitesmoke;
-  color: black;
+}
+.carousel-details-footer {
+  position: absolute;
+  display: flex;
+  padding: 2px;
+  bottom: 5%;
+  width: 90%;
+  /* overflow: clip; */
+}
+.carousel-productPrice {
+  padding-left: auto;
+  padding-right: 5%;
+  padding-top: 2%;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  width: 30%;
+  font-size: small;
 }
 
-.carousel-productPrice {
-  position: absolute;
-  bottom: 5%;
-  right: 15%;
-  width: 80%;
-  background-color: whitesmoke;
-  color: darkgrey;
-  text-align: right;
+.carousel-footer-separator {
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  width: 1%;
+}
+.carousel-starRating {
+  padding-left: auto;
+  padding-left: 5%;
+  margin-left: auto;
+  margin-right: 0;
+  justify-content: center;
+  width: 69%;
 }
 
 .carousel-slogan {
@@ -723,8 +796,6 @@ body {
   justify-content: bottom;
   width: 90%;
   max-width: 90%;
-  background-color: whitesmoke;
-  color: black;
 }
 
 
@@ -737,8 +808,6 @@ body {
   font-style: italic;
   width: 90%;
   max-width: 90%;
-  background-color: whitesmoke;
-  color: black;
 }
 .carousel-action {
   position: absolute;
@@ -768,8 +837,20 @@ body {
 }
 .modal-content {
   height: auto;
-  width: 450px;
-  background-color: #fff;
+  width: 650px;
+  border-radius: 3px;
+  background-color: #eee;
+  padding-top: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 10px;
+}
+
+.modal-content-dark {
+  height: auto;
+  width: 650px;
+  border-radius: 3px;
+  background-color: #333;
   padding-top: 5px;
   padding-left: 5px;
   padding-right: 5px;
@@ -780,16 +861,16 @@ body {
   padding: 3px;
 }
 
-.modal-footer {
-  padding: 5px;
-}
-
 .modal-title {
   margin: 0;
 }
 
-.modal-body {
+.modal-body{
   padding: 10px;
+}
+
+.modal-footer {
+  padding: 5px;
 }
 
 .modal-body-detail {
@@ -807,6 +888,7 @@ body {
   justify-content: center;
   width: 15%;
 }
+
 
 .modal-body-middle {
   align-items: center;
@@ -828,6 +910,23 @@ body {
 }
 
 
+.modal-body-leftRating {
+  padding-left: 4%;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  width: 21%;
+}
+
+.modal-body-rightRating {
+  /* padding-left: 10%; */
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  width: 15%;
+}
 
 .modal-leftName {
   justify-content: left;
@@ -838,3 +937,4 @@ body {
   justify-content: right;
   text-align: right;
 }
+

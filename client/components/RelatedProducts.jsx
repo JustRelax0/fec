@@ -6,7 +6,7 @@ import CarouselButtons from './CarouselButtons.jsx';
 import token from '../../config.js';
 
 import plusSign from './src/plusSign.png';
-
+import axios from 'axios';
 
 class RelatedProducts extends React.Component {
   constructor(props) {
@@ -106,37 +106,53 @@ class RelatedProducts extends React.Component {
           this.relatedProductsRequest(this.props.product.id)
             .then((relatedProductArray) => {
               // recursive function for each
-              var doNextPromise = (p) => {
-                this.productRequest(relatedProductArray[p])
-                  .then((product) => {
-                    this.setState({
-                      related: [...this.state.related, product],
-                      carouselSize: p + 1
-                    })
-
-                    return this.productStylesRequest(relatedProductArray[p]);
+              var doNextPromise = (p) => { this.productRequest(relatedProductArray[p])
+                .then((product) => {
+                  this.setState({
+                    related: [...this.state.related, product],
+                    carouselSize: p + 1
                   })
-                  .then((productStyles) => {
 
-                    // make shallow copy of item
-                    var relatedItems = [...this.state.related];
+                  return this.productStylesRequest(relatedProductArray[p]);
+                })
+                .then((productStyles) => {
 
-                    // shallow copy of item to mutate
-                    var relatedItem = {...relatedItems[p]};
+                  // make shallow copy of item
+                  var relatedItems = [...this.state.related];
 
-                    // replace property
-                    relatedItem.thumbnail_url = productStyles.results[0].photos[0].thumbnail_url;
-                    relatedItems[p] = relatedItem;
+                  // shallow copy of item to mutate
+                  var relatedItem = {...relatedItems[p]};
 
-                    this.setState({
-                      related: relatedItems
-                    });
+                  // replace property
+                  relatedItem.thumbnail_url = productStyles.results[0].photos[0].thumbnail_url;
+                  relatedItems[p] = relatedItem;
 
-                    p++;
-                    if (p < relatedProductArray.length) {
-                      doNextPromise(p);
-                    }
-                  })
+                  this.setState({
+                    related: relatedItems
+                  });
+
+                  // console.log('p: ', relatedProductArray[p]);
+                  return this.props.getReviews(parseInt(relatedProductArray[p]));
+                })
+                .then((productReviews) => {
+                  var relatedItems = [...this.state.related];
+
+                  // shallow copy of item to mutate
+                  var relatedItem = {...relatedItems[p]};
+
+                  // replace property
+                  relatedItem.reviews = productReviews;
+                  relatedItems[p] = relatedItem;
+                  console.log(relatedItems);
+                  p++;
+                  this.setState({
+                    related: relatedItems
+                  });
+
+                  if (p < relatedProductArray.length) {
+                    doNextPromise(p);
+                  }
+                })
               }
               // call the above recursive function on the first index
               doNextPromise(0);
@@ -158,7 +174,10 @@ class RelatedProducts extends React.Component {
   }
 
 
+
+
   render() {
+
     if (this.state.related === undefined ) {
       return (
         <div className="relatedProducts relatedProductCards">
@@ -173,23 +192,19 @@ class RelatedProducts extends React.Component {
           <div className="carousel-buttons relatedProductCards">
             <CarouselButtons view={this.state.activeCarousel} updateCarousel={this.updateCarousel} />
           </div>
-          <div className="carousel-inner relatedProductCards"
-               style={{ transform: `translateX(-${(this.state.activeCarousel * 100)/5}%)` }}>
-            {
-              this.state.related.map((item, index) => {
-
-                return (
-                // return React.cloneElement(item, {width: "100%"})
-                  <RelatedProduct
-                    key = {index}
-                    previewProduct = {this.props.product}
-                    relatedProduct = {item}
-                    product_selection = {this.updateRelated}
-                    // add star rating later
+          <div className="carousel-inner relatedProductCards" style={{ transform: `translateX(-${(this.state.activeCarousel * 100)/5}%)` }}>
+            { this.state.related.map((item, index) => {
+              return (
+                <RelatedProduct
+                  key = {index}
+                  previewProduct = {this.props.product}
+                  relatedProduct = {item}
+                  product_selection = {this.updateRelated}
+                  darkMode = {this.props.darkMode}
+                  // add star rating later
                   />
-                );
-              })
-            }
+              );
+            })}
           </div>
         </div>
         </React.Fragment>
