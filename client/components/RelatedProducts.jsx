@@ -86,7 +86,7 @@ class RelatedProducts extends React.Component {
     });
   }
 
-  updateRelated(id = 59554) {
+  updateRelated(id = 59555) {
     if (typeof id === 'object') {
       this.props.productSelector(id);
     }
@@ -143,7 +143,7 @@ class RelatedProducts extends React.Component {
                   // replace property
                   relatedItem.reviews = productReviews;
                   relatedItems[p] = relatedItem;
-                  console.log(relatedItems);
+                  // console.log(relatedItems);
                   p++;
                   this.setState({
                     related: relatedItems
@@ -181,13 +181,13 @@ class RelatedProducts extends React.Component {
     if (this.state.related === undefined ) {
       return (
         <div className="relatedProducts relatedProductCards">
-          Related Products Not Found
+          <br/>Related Products Not Found
       </div>
       );
     } else {
       return(
         <React.Fragment>
-        <div className="carousel-title relatedProductCards">Related Products </div>
+        <div className="carousel-title relatedProductCards"><br/>Related Products </div>
         <div className="carousel relatedProductCards">
           <div className="carousel-buttons relatedProductCards">
             <CarouselButtons view={this.state.activeCarousel} updateCarousel={this.updateCarousel} />

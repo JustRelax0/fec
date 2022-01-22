@@ -618,13 +618,8 @@ body {
   margin: 10px;
   height: 90%;
   width: 20%;
-  transition: all 0.2s;
 }
 
-.carousel-item-dark:hover, .carousel-item:hover {
-  opacity: 0.6;
-  cursor:pointer;
-}
 
 .carousel-item-dark {
   position: relative;
@@ -640,7 +635,6 @@ body {
   margin: 10px;
   height: 90%;
   width: 20%;
-  transition: all 0.2s;
 }
 
 .carousel-productDetails {

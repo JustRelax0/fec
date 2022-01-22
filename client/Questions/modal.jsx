@@ -55,10 +55,10 @@ class Modal extends React.Component {
         }
       }
 
-      console.log(options);
+      // console.log(options);
       axios(options)
       .then(result => {
-        console.log(result);
+        // console.log(result);
         alert('submission successful');
         this.props.modalToggle(e);
       })

@@ -42,9 +42,9 @@ var Comparing = (props) => {
     }
   }
 
-  console.log('features table: ');
-  console.log(props.previewProduct.reviews);
-  console.log(props.relatedProduct.reviews);
+  // console.log('features table: ');
+  // console.log(props.previewProduct.reviews);
+  // console.log(props.relatedProduct.reviews);
 
 
   var displayCheckMarkIf = (included, side) => {

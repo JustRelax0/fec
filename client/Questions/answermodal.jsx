@@ -71,7 +71,7 @@ class Answermodal extends React.Component {
           images: [...this.state.images, result.data.secure_url],
           imageCount: this.state.imageCount + 1
         }, () => {
-          console.log(this.state.images);
+          // console.log(this.state.images);
           alert('Image upload successful');
         });
       })

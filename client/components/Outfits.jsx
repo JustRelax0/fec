@@ -62,7 +62,7 @@ class Outfits extends React.Component {
     } else {
       if (newIndex < 0) {
         newIndex = 0;
-        console.log(newIndex);
+        // console.log(newIndex);
       } else if (newIndex > this.state.length) {
         newIndex = this.state.length - 1;
         // console.log(newIndex);
@@ -78,7 +78,7 @@ class Outfits extends React.Component {
 
   render() {
 
-  console.log('outfits props', this.state.wardrobe);
+  // console.log('outfits props', this.state.wardrobe);
     return (
       <React.Fragment>
       <div className="carousel-title relatedProductCards">My Outfits</div>
