@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Questionapp from './Questions/questionapp.jsx';
 import Reviews from './reviews/index.jsx';
-import GeneralProductInfo from './overview/GeneralProductInfo.jsx';
+import GeneralProductInfo from './overview/generalProductInfo.jsx';
 import token from '../config.js';
 import axios from 'axios';
 import './style.css';
