@@ -266,14 +266,6 @@ body {
   color: #204ba1;
 }
 
-.questionbody {
-  /* color: black; */
-}
-
-.questionhelpful {
-  /* color:black; */
-}
-
 /* Modals */
 .qmodal {
   border: solid black 2px;
@@ -483,29 +475,12 @@ body {
 }
 
 /* Answer */
-.answerhelpful {
-  /* color: black; */
-}
-
-.answerbody {
-  /* color: black; */
-}
-
-.byuser {
-  /* color: black; */
-}
 
 .qaimage {
   max-width: 50px;
   height: auto;
   margin: 10px;
 }
-
-/* img {
-  max-width: 50px;
-  height: auto;
-  margin: 10px;
-} */
 
 
 /*=================================================================*/
