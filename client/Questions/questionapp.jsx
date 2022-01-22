@@ -122,7 +122,6 @@ class Questionapp extends React.Component {
     }
 }
 
-
   render() {
     return (<div className='questionapp QuestionsAndAnswers'>
       <div className='questionapptitle QuestionsAndAnswers'>{`Questions & Answers`}</div>
