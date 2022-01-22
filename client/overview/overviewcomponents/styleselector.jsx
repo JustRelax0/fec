@@ -13,6 +13,18 @@ class StyleSelector extends React.Component {
     }
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    //this.props.styles[0].style_id
+    if (this.props.styles.length !== 0 && prevProps.styles.length !== 0) {
+      if (this.props.styles[0].style_id !== prevProps.styles[0].style_id) {
+        this.setState({
+          selectedStyle: 0
+        })
+      }
+    }
+
+  }
+
   styleButtonClick(e) {
     e.preventDefault();
     var styleClicked = this.findStyle(e.target.alt);
@@ -37,15 +49,24 @@ class StyleSelector extends React.Component {
   }
 
   render() {
+
+    //this.props.styles[0].style_id
+
     var stylesArray = [];
     for (var i = 0; i < this.props.styles.length / 4; i++) {
       stylesArray[i] = this.props.styles.slice(i * 4, (i+1) * 4);
     }
 
+    var styleIndex = this.state.selectedStyle;
+
+    if (styleIndex >= this.props.styles.length) {
+      styleIndex = this.props.styles.length - 1;
+    }
+
     var createStyleTD = (style) => {
       var isSelected = false;
-      if (this.props.styles[this.state.selectedStyle].name === style.name) {
-        console.log(style.name);
+
+      if (this.props.styles[styleIndex].name === style.name) {
         isSelected = true;
       }
 
@@ -73,7 +94,7 @@ class StyleSelector extends React.Component {
 
     var styleNameSpan;
     if (this.props.styles.length !== 0) {
-      styleNameSpan = <span className="style-name overview">{this.props.styles[this.state.selectedStyle].name}</span>
+      styleNameSpan = <span className="style-name overview">{this.props.styles[styleIndex].name}</span>
     }
 
     return (

@@ -80,14 +80,14 @@ class AddToCart extends React.Component {
     /* out of stock tester function*/
     var quantitySelector = [];
     if (this.state.quantity > 0 && this.state.sizeSelected) {
-      quantitySelector = <select className="overview" onChange={this.quantitySelected.bind(this)}>
+      quantitySelector = <select className="quantity-selector overview" onChange={this.quantitySelected.bind(this)}>
         <option className="overview" value={1} selected>1</option>{
         Array.from({ length: (this.state.quantity - 1 > 14 ? 14 : this.state.quantity) }, (_, i) => {
           return <option className="overview" value={i + 2}>{i + 2}</option>
         })}
       </select>
     } else {
-      quantitySelector = <select className="overview" disabled>
+      quantitySelector = <select className="quantity-selector overview" disabled>
         <option className="overview" value={'-'} selected>-</option>
       </select>
     }
@@ -99,12 +99,12 @@ class AddToCart extends React.Component {
     }
     var sizeSelector = [];
     if (sizeOptionsList.length > 0) {
-      sizeSelector = <select className="overview" onChange={this.sizeSelected.bind(this)} name="size">
+      sizeSelector = <select className="size-selector overview" onChange={this.sizeSelected.bind(this)} name="size">
         <option className="overview" value="Select Size" selected>Select Size</option>
         {sizeOptionsList}
       </select>
     } else {
-      sizeSelector = <select className="overview" name="size" disabled>
+      sizeSelector = <select className="size-selector overview" name="size" disabled>
         <option value="OUT OF STOCK" selected>OUT OF STOCK</option>
       </select>
     }
@@ -113,13 +113,13 @@ class AddToCart extends React.Component {
       //button shouldnt exist in this situation
     } else if (this.state.sizeSelected && this.state.quantitySelected) { //valid size and quantity
       //button works as expected
-      addToCartButton = <button className="addToCartButton overview" onClick={this.addToCart.bind(this)}>Add To Cart</button>
+      addToCartButton = <button className="add-to-cart-button overview" onClick={this.addToCart.bind(this)}>Add To Cart</button>
     } else { //select size is selected (not valid size and quantity)
       //
-      addToCartButton = <button className="addToCartButton overview" onClick={this.invalidAddToCart.bind(this)}>Add To Cart</button>
+      addToCartButton = <button className="add-to-cart-button overview" onClick={this.invalidAddToCart.bind(this)}>Add To Cart</button>
     }
     return (
-      <div className="addToCart overview">
+      <div className="add-to-cart overview">
         {sizeSelector}
         {quantitySelector}
         {addToCartButton}

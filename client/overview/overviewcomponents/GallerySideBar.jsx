@@ -40,7 +40,6 @@ class GallerySideBar extends React.Component {
       for (var i = 0; i < this.props.currentStyle.photos.length / 7; i++) {
         photos[i] = this.props.currentStyle.photos.slice(i * 7, (i+1) * 7);
       }
-      console.log('photos at 0: ', photos[0]);
       //photos = this.props.currentStyle.photos;
       for (var i in photos[this.state.photoArrayIndex]) {
         var alt_val = parseInt(i) + this.state.photoArrayIndex * 7;

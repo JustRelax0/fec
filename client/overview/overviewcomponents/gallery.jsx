@@ -12,13 +12,17 @@ class Gallery extends React.Component {
       expanded: false
     }
   }
-  componentDidMount() {
-    if (this.state.photoIndex !== 0) {
+  componentDidUpdate(prevProps, prevState) {
+    //this.props.currentStyle.style_id
+    if (this.props.currentStyle.style_id !== prevProps.currentStyle.style_id) {
       this.setState({
-        photoIndex: 0
+        photoIndex: 0,
+        expanded: false
       })
     }
+
   }
+
   scrollGallery(e) {
     e.preventDefault();
     if (e.target.value === 'Right') {
@@ -57,21 +61,29 @@ class Gallery extends React.Component {
     })
   }
   render() {
+
+    //this.props.currentStyle.style_id
+
     var photoURL;
     var photoIndex = this.state.photoIndex;
+    var galleryImage;
     if (this.props.currentStyle.photos !== undefined) {
       if(this.props.currentStyle.photos.length <= this.state.photoIndex) {
         photoIndex = this.props.currentStyle.photos.length - 1;
       }
       photoURL = this.props.currentStyle.photos[photoIndex].url;
+
+      galleryImage = <img className={this.state.expanded ? "gallery-main-image-expanded overview" : "gallery-main-image overview"} src={photoURL}></img>
+
     }
 
     return (
-      <div className="gallery overview">
+      <div className={this.state.expanded ? "gallery-expanded overview" : "gallery overview"}>
+        <button className="toggle-expanded-button overview" onClick={this.expand.bind(this)}>{this.state.expanded? "collapse" : "expand"}</button>
+      {galleryImage}
       <GallerySideBar currentStyle={this.props.currentStyle} changePhoto={this.changePhoto.bind(this)}/>
-      <img className="gallery-main-image overview" src={photoURL}></img>
-      <button value="Left" onClick={this.scrollGallery.bind(this)} className="gallery-scroll-button scroll-left overview">Scroll Image Left</button>
-      <button value="Right" onClick={this.scrollGallery.bind(this)} className="gallery-scroll-button scroll-right overview">Scroll Image Right</button>
+      <button value="Left" onClick={this.scrollGallery.bind(this)} className="gallery-scroll-button scroll-left overview">&lt;</button>
+      <button value="Right" onClick={this.scrollGallery.bind(this)} className="gallery-scroll-button scroll-right overview">&gt;</button>
       </div>
 
 

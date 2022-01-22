@@ -7,6 +7,36 @@
   color: black;
 }
 
+.scroll-button, .modalsubmit, .submitphototrue, .submitanswer, .file-upload-button, .newquestion, .morequestions, .moreanswers, .modetoggle, .toggle-expanded-button, .size-selector, .quantity-selector,
+.add-to-cart-button{
+  display:inline-block;
+  padding:0.35em 1.2em;
+  border:0.1em solid #FFFFFF;
+  margin: 0 0.3em 0.3em 0;
+  border-radius:0.12em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family:'Roboto',sans-serif;
+  font-weight:300;
+  color:#000000;
+  text-align:center;
+  transition: all 0.2s;
+  background-color:darkgray;
+  }
+.scroll-button:hover, .modalsubmit:hover, .submitphototrue:hover, .submitanswer:hover, .file-upload-button:hover, .moreanswers:hover, .modetoggle:hover, .toggle-expanded-button:hover, .size-selector:hover, .quantity-selector:hover,
+.add-to-cart-button:hover{
+  cursor:pointer;
+  color:#000000;
+  background-color:#d3d3d3;
+  }
+  @media all and (max-width:30em){
+    .scroll-button, .modalsubmit, .submitphototrue, .submitanswer, .file-upload-button, .newquestion, .morequestions, .moreanswers, .modetoggle, .toggle-expanded-button, .size-selector, .quantity-selector,
+    .add-to-cart-button{
+  display:block;
+  margin:0.4em auto;
+  }
+}
+
 /* padding-left: 2%; */
 
 .appdark {
@@ -15,14 +45,14 @@
 }
 
 .modetoggle {
-  background-color: white;
   display: flex;
+  background-color:darkgray;
 }
 
 .modetoggle:hover {
   cursor: pointer;
-  background-color: #226df5;
-  color: white;
+  color:#000000;
+  background-color:#d3d3d3;
 }
 
 /* Product Overview */
@@ -75,73 +105,80 @@ body {
   color:yellow;
   position: absolute;
   margin-left: -16px;
-  width: 12px;
+  width: 11px;
   overflow:hidden;
 }
 
-/*.star-left {
-  width: 10px;
-  float: left;
-  color: red;
-}
-
-.star-middle-left {
-  color: yellow;
-  width: 10px;
-  margin-left: 5px;
-  float: left;
-}
-
-.star-middle {
-  width: 10px;
-  margin-left: 5px;
-  float: left;
-  color: green;
-}
-
-.star-middle-right {
-  color: blue;
-  width: 10px;
-  margin-left: 5px;
-  float: left;
-}
-
-.star-right {
-  margin-left: 5px;
-  width: 10px;
-  float: left;
-  color: purple;
-}*/
-
 .product-general-info {
   width:100%;
+  height:100%;
+  position:relative;
 }
 
 .product-overview {
   color: gray;
-  outline-style:solid;
   width: 63%;
 }
 
 .gallery {
   color: gray;
-  outline-style:solid;
   width: 63%;
-
+  min-height: 725px;
 }
 
 .gallery-main-image {
   max-height: 600px;
   max-width: 100%;
   margin-bottom: 50px;
+  position:relative;
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
 }
 
 .gallery-expanded {
-  width:100%
+  width: 100%;
+  min-height:725px;
+  position:relative;
+  z-index: 2;
 }
 
 .gallery-main-image-expanded {
-  max-height: 100%
+  max-height: 100%;
+  position:relative;
+  z-index: 2;
+}
+
+.toggle-expanded-button {
+  position:absolute;
+  top:20px;
+  left:10px;
+  z-index: 3;
+}
+
+
+.gallery-scroll-button{
+  font-size:small;
+  border:inset lightgray 1px;
+  border-radius: 2px;
+  position:absolute;
+  top:44%;
+  bottom:52%;
+  transition:all 0.2s;
+}
+
+.scroll-right {
+  left:57%
+}
+.scroll-left {
+  left:4%
+}
+
+.gallery-scroll-button:hover{
+  cursor: pointer;
+  background-color: lightgrey;
+  font-weight:bold;
+  color:white;
 }
 
 .thumbnail-scroller {
@@ -159,33 +196,48 @@ body {
   object-fit: cover;
   height: 60px;
   width: 60px;
+
+  transition:all 0.2s;
+}
+
+.sidebar-thumbnail:hover {
+  opacity:0.6;
+  outline-style:solid;
+  outline-color:lightgrey;
 }
 
 .product-info {
   color: gray;
-  outline-style:solid;
-  width: 35%;
-  margin-left: 64%;
-  float: left;
+  position:absolute;
+  left:64%;
+  z-index:0;
+
 }
+
+
 
 
 .style-button {
   border: black;
-  border-style: inset;
+  border-style: solid;
 
   object-fit: cover;
   border-radius: 50%;
-  height: 60px;
-  width: 60px;
+  max-height: 60px;
+  max-width: 60px;
+  min-height: 60px;
+  min-width: 60px;
+
+  transition:all 0.2s;
 }
 
 .selected-style {
-  border: yellow;
+  border: grey;
+  border-style:solid;
 }
 
 .style-button:hover {
-  border:grey;
+  opacity:0.6;
 }
 
 /*=================================================================*/
@@ -207,7 +259,6 @@ body {
 }
 
 .newquestion {
-  background-color: white;
   display: flex;
   justify-content: center;
   margin-bottom: 50px;
@@ -215,19 +266,18 @@ body {
 
 .newquestion:hover {
   cursor: pointer;
-  background-color: #226df5;
-  color: white;
+  background-color: #d3d3d3;
+  color: black;
 }
 
 .morequestions {
-  background-color: white;
   float: left;
 }
 
 .morequestions:hover {
   cursor: pointer;
-  background-color: #226df5;
-  color: white;
+  background-color: #d3d3d3;
+  color: black;
 }
 
 /* Questionlist */
@@ -331,15 +381,9 @@ body {
 }
 
 .modalsubmit {
-  background-color: white;
   display: flex;
 }
 
-.modalsubmit:hover {
-  cursor: pointer;
-  background-color: #226df5;
-  color: white;
-}
 
 .modalclose {
   float: right;
@@ -407,31 +451,19 @@ body {
 }
 
 .submitanswer {
-  background-color: white;
   display: flex;
   margin-top: 30px;
 }
 
-.submitanswer:hover {
-  cursor: pointer;
-  background-color: #226df5;
-  color: white;
-}
 
 .required {
   color: #c70a23;
 }
 
 .submitphototrue {
-  background-color: white;
   display: flex;
 }
 
-.submitphototrue:hover {
-  cursor: pointer;
-  background-color: #226df5;
-  color: white;
-}
 
 .imagemodal {
   position: fixed;
@@ -465,13 +497,12 @@ body {
 /* Answerlist */
 
 .moreanswers {
-  background-color: white;
+  border-color:#737394;
 }
-
 .moreanswers:hover {
   cursor: pointer;
-  background-color: #226df5;
-  color: white;
+  background-color: #d3d3d3;
+  color: black;
 }
 
 /* Answer */
@@ -533,6 +564,7 @@ body {
   font-size: small;
   border: inset lightgray 1px;
   border-radius: 2px;
+  transition: all 0.2s;
 }
 
 .carousel-button-left > button {
@@ -549,6 +581,7 @@ body {
   font-size: small;
   border: inset lightgray 1px;
   border-radius: 2px;
+  transition: all 0.2s;
 }
 
 .carousel-button-right > button {
@@ -585,6 +618,12 @@ body {
   margin: 10px;
   height: 90%;
   width: 20%;
+  transition: all 0.2s;
+}
+
+.carousel-item-dark:hover, .carousel-item:hover {
+  opacity: 0.6;
+  cursor:pointer;
 }
 
 .carousel-item-dark {
@@ -601,6 +640,7 @@ body {
   margin: 10px;
   height: 90%;
   width: 20%;
+  transition: all 0.2s;
 }
 
 .carousel-productDetails {

@@ -27,7 +27,6 @@ class GeneralProductInfo extends React.Component {
           }
       })
       .then(results => {
-        console.log('GPI.jsx line 29 results: ', results.data.results);
         this.setState({
           styles: results.data.results,
           currentStyle: results.data.results[0]
@@ -44,7 +43,6 @@ class GeneralProductInfo extends React.Component {
         }
     })
     .then(results => {
-      console.log('GPI.jsx line 29 results: ', results.data.results);
       this.setState({
         styles: results.data.results,
         currentStyle: results.data.results[0]
@@ -76,6 +74,12 @@ class GeneralProductInfo extends React.Component {
   }
   //this.state.product.reviews
   render() {
+
+    var features = [];
+
+    for (var i in this.props.product.features) {
+      features.push(<li className="feature-list-item overview">{this.props.product.features[i].feature + ': ' + this.props.product.features[i].value}</li>)
+    }
     return (
       <div className='product-general-info overview'>
         <div className='product-info overview'>
@@ -85,6 +89,7 @@ class GeneralProductInfo extends React.Component {
           <div className='product-price overview'>{this.props.product.default_price}</div>
           <StyleSelector updateGallery={this.updateGallery.bind(this)} styles={this.state.styles}/>
           <AddToCart currentStyle={this.state.currentStyle}/>
+          <ul>{features}</ul>
         </div>
         <Gallery currentStyle={this.state.currentStyle}/>
         <div className='product-overview overview'>{this.props.product.description}</div>
